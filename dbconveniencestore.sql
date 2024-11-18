@@ -1,7 +1,6 @@
 CREATE DATABASE IF NOT EXISTS `dbconveniencestore` /*!40100 DEFAULT CHARACTER SET utf8
 */;
 USE `dbconveniencestore`;
-
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: dbconveniencestore
@@ -113,7 +112,7 @@ CREATE TABLE `employees` (
   `first_name` varchar(50) NOT NULL,
   `employee_email` varchar(50) NOT NULL,
   `contact_number` varchar(50) NOT NULL,
-  `job_title` varchar(50) NOT NULL,
+  `job_title` enum('Cashier','Manager','Janitorial Staff','Stock Clerk','Security Guard') NOT NULL,
   `hire_date` date NOT NULL,
   `employee_schedule` varchar(50) NOT NULL,
   `hourly_rate` decimal(10,2) NOT NULL,
@@ -158,6 +157,33 @@ INSERT INTO `inventory` VALUES (102,80,'2024-09-01'),(248,250,'2024-10-05'),(260
 UNLOCK TABLES;
 
 --
+-- Table structure for table `inventory_shelves`
+--
+
+DROP TABLE IF EXISTS `inventory_shelves`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `inventory_shelves` (
+  `shelf_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity_on_shelf` int NOT NULL,
+  `last_updated` date NOT NULL,
+  PRIMARY KEY (`shelf_id`),
+  KEY `product_id_idx` (`product_id`),
+  CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `inventory_shelves`
+--
+
+LOCK TABLES `inventory_shelves` WRITE;
+/*!40000 ALTER TABLE `inventory_shelves` DISABLE KEYS */;
+/*!40000 ALTER TABLE `inventory_shelves` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `products`
 --
 
@@ -169,7 +195,7 @@ CREATE TABLE `products` (
   `product_name` varchar(100) NOT NULL,
   `purchase_price` decimal(10,2) NOT NULL,
   `selling_price` decimal(10,2) NOT NULL,
-  `product_category` varchar(50) NOT NULL,
+  `product_category` enum('Dairy','Snacks','Personal Care','Beverages','Stationery','Health & Wellness','Canned Goods','Household Items','Grocery','Bakery') NOT NULL,
   `supplier_id` int NOT NULL,
   PRIMARY KEY (`product_id`),
   KEY `supplier_id_idx` (`supplier_id`),
@@ -199,7 +225,7 @@ CREATE TABLE `sales` (
   `noted_by_employee_id` int NOT NULL,
   `sales` decimal(10,2) NOT NULL,
   `sale_date` date NOT NULL,
-  `quantity_ordered` varchar(45) NOT NULL,
+  `quantity_ordered` int NOT NULL,
   PRIMARY KEY (`product_id`),
   KEY `sales_ibfk_1` (`noted_by_employee_id`),
   CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`noted_by_employee_id`) REFERENCES `employees` (`employee_id`),
@@ -213,7 +239,7 @@ CREATE TABLE `sales` (
 
 LOCK TABLES `sales` WRITE;
 /*!40000 ALTER TABLE `sales` DISABLE KEYS */;
-INSERT INTO `sales` VALUES (102,464,45.00,'2024-09-01','1'),(248,118,530.00,'2024-10-05','4'),(260,105,799.75,'2024-08-20','5'),(264,624,23.75,'2024-10-10','1'),(463,645,129.75,'2024-10-18','2'),(565,164,15.00,'2024-09-15','1'),(569,651,63.50,'2024-09-28','1'),(598,648,42.75,'2024-09-30','2'),(893,948,235.00,'2024-10-12','3'),(895,101,239.75,'2024-10-01','3');
+INSERT INTO `sales` VALUES (102,464,45.00,'2024-09-01',1),(248,118,530.00,'2024-10-05',4),(260,105,799.75,'2024-08-20',5),(264,624,23.75,'2024-10-10',1),(463,645,129.75,'2024-10-18',2),(565,164,15.00,'2024-09-15',1),(569,651,63.50,'2024-09-28',1),(598,648,42.75,'2024-09-30',2),(893,948,235.00,'2024-10-12',3),(895,101,239.75,'2024-10-01',3);
 /*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,4 +307,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-09  2:48:07
+-- Dump completed on 2024-11-18 12:22:47
+
