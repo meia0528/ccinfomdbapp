@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS `dbconveniencestore` /*!40100 DEFAULT CHARACTER SET utf8
-*/;
-USE `dbconveniencestore`;
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: dbconveniencestore
@@ -223,7 +220,6 @@ DROP TABLE IF EXISTS `sales`;
 CREATE TABLE `sales` (
   `product_id` int NOT NULL,
   `noted_by_employee_id` int NOT NULL,
-  `sales` decimal(10,2) NOT NULL,
   `sale_date` date NOT NULL,
   `quantity_ordered` int NOT NULL,
   PRIMARY KEY (`product_id`),
@@ -239,7 +235,7 @@ CREATE TABLE `sales` (
 
 LOCK TABLES `sales` WRITE;
 /*!40000 ALTER TABLE `sales` DISABLE KEYS */;
-INSERT INTO `sales` VALUES (102,464,45.00,'2024-09-01',1),(248,118,530.00,'2024-10-05',4),(260,105,799.75,'2024-08-20',5),(264,624,23.75,'2024-10-10',1),(463,645,129.75,'2024-10-18',2),(565,164,15.00,'2024-09-15',1),(569,651,63.50,'2024-09-28',1),(598,648,42.75,'2024-09-30',2),(893,948,235.00,'2024-10-12',3),(895,101,239.75,'2024-10-01',3);
+INSERT INTO `sales` VALUES (102,464,'2024-09-01',1),(248,118,'2024-10-05',4),(260,105,'2024-08-20',5),(264,624,'2024-10-10',1),(463,645,'2024-10-18',2),(565,164,'2024-09-15',1),(569,651,'2024-09-28',1),(598,648,'2024-09-30',2),(893,948,'2024-10-12',3),(895,101,'2024-10-01',3);
 /*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,5 +303,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-18 12:22:47
-
+-- Dump completed on 2024-11-20  0:31:21
