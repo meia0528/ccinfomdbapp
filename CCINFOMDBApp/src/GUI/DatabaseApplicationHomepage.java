@@ -3,9 +3,11 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
+// NOTE: Only edit the function that is assigned to you -> create a new class under the GUI package for your system's GUI
+// the main will be contained here
+
 public class DatabaseApplicationHomepage {
-    
- 
+
     private JFrame frame;
     
     public DatabaseApplicationHomepage() {
@@ -96,7 +98,7 @@ public class DatabaseApplicationHomepage {
     // you are free to modify and create new methods/classes if necessary
     private void openBranchManagement() {
     	JFrame branchFrame = new JFrame("Branch Management System");
-        branchFrame.setSize(1200, 700); // let's follow this as standard for the opening so all records are visible
+        branchFrame.setSize(800, 700); // let's follow this as standard for the opening so all records are visible
         branchFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         branchFrame.setLocationRelativeTo(frame);
         branchFrame.setResizable(false);
@@ -104,17 +106,12 @@ public class DatabaseApplicationHomepage {
     }
 
     private void openInventoryManagement() {
-    	JFrame inventoryFrame = new JFrame("Inventory Management System");
-    	inventoryFrame.setSize(1200, 700); // let's follow this as standard for the opening so all records are visible
-    	inventoryFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    	inventoryFrame.setLocationRelativeTo(frame);
-    	inventoryFrame.setResizable(false);
-    	inventoryFrame.setVisible(true);
+    	new InventoryManagementGUI();
     }
 
     private void openEmployeeManagement() {
     	JFrame employeeFrame = new JFrame("Employee Management System");
-    	employeeFrame.setSize(1200, 700); // let's follow this as standard for the opening so all records are visible
+    	employeeFrame.setSize(800, 700); // let's follow this as standard for the opening so all records are visible
     	employeeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     	employeeFrame.setLocationRelativeTo(frame);
     	employeeFrame.setResizable(false);
@@ -123,7 +120,7 @@ public class DatabaseApplicationHomepage {
 
     private void openSupplierManagement() {
     	JFrame supplierFrame = new JFrame("Supplier Management System");
-    	supplierFrame.setSize(1200, 700); // let's follow this as standard for the opening so all records are visible
+    	supplierFrame.setSize(800, 700); // let's follow this as standard for the opening so all records are visible
     	supplierFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     	supplierFrame.setLocationRelativeTo(frame);
     	supplierFrame.setResizable(false);
