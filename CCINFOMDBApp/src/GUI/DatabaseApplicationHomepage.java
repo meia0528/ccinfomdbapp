@@ -3,38 +3,45 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
-// NOTE: Only edit the function that is assigned to you -> create a new class under the GUI package for your system's GUI
-// the main will be contained here
-
 public class DatabaseApplicationHomepage {
-
+    
+ 
     private JFrame frame;
     
     public DatabaseApplicationHomepage() {
         
     	// frame specs
         frame = new JFrame();
-        frame.setTitle("Database Application - Homepage");
+        frame.setTitle("Convenience Store Database System - Homepage");
         frame.setSize(800, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
-        frame.setLayout(new BorderLayout());
+        frame.setLayout(null);
         
-        // "Convenience Store" title
-        JPanel titlePanel = new JPanel(new BorderLayout());
-        titlePanel.setBackground(Color.WHITE);
-        titlePanel.setPreferredSize(new Dimension(frame.getWidth(), 120));
-   
-        JLabel titleLabel = new JLabel("Convenience Store", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
-        titlePanel.add(titleLabel, BorderLayout.CENTER);
+        JLayeredPane layer = new JLayeredPane();
+        layer.setBounds(0, 0, 800, 700);
+        frame.add(layer);
+
+        ImageIcon backgroundHomepage = new ImageIcon("src/resources/background.png");
+        JLabel backgroundLabel = new JLabel(backgroundHomepage);
+        backgroundLabel.setBounds(0, 120, 800, 580);
+        layer.add(backgroundLabel, Integer.valueOf(0));
+        
+        JLabel titleLabel = new JLabel();
+        titleLabel.setBounds(0, 0, 800, 120);
+        ImageIcon titleLabelImage = new ImageIcon("src/resources/logo.png");
+        titleLabel.setIcon(titleLabelImage);
+        layer.add(titleLabel, Integer.valueOf(1));  
         
         // button panel 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+        buttonPanel.setLayout(null);
         buttonPanel.setBackground(Color.WHITE);
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        buttonPanel.setBounds(0, 120, 800, 580);
+        buttonPanel.setOpaque(false);
+        layer.add(buttonPanel, Integer.valueOf(2));       
+       
         
         // declaring new buttons
         JButton branchManagementButton = new JButton("Branch Management System");
@@ -45,21 +52,15 @@ public class DatabaseApplicationHomepage {
         
         // sizing & formatting
         Dimension buttonSize = new Dimension(350, 65);
-        branchManagementButton.setMaximumSize(buttonSize);
-        inventoryManagementButton.setMaximumSize(buttonSize);
-        employeeManagementButton.setMaximumSize(buttonSize);
-        supplierManagementButton.setMaximumSize(buttonSize);
-        
-        branchManagementButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        inventoryManagementButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        employeeManagementButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        supplierManagementButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
+        branchManagementButton.setBounds(225, 60, buttonSize.width, buttonSize.height);
+        inventoryManagementButton.setBounds(225, 160, buttonSize.width, buttonSize.height);
+        employeeManagementButton.setBounds(225, 260, buttonSize.width, buttonSize.height);
+        supplierManagementButton.setBounds(225, 360, buttonSize.width, buttonSize.height);
+ 
         
         // formatting - font & font color
         branchManagementButton.setFont(new Font("Arial", Font.BOLD, 16));
         branchManagementButton.setForeground(Color.WHITE);
-        //branchManagementButton.setBorder(BorderFactory.createEmptyBorder()); 
         
         inventoryManagementButton.setFont(new Font("Arial", Font.BOLD, 16));
         inventoryManagementButton.setForeground(Color.WHITE);
@@ -76,11 +77,8 @@ public class DatabaseApplicationHomepage {
         
         // formatting
         buttonPanel.add(branchManagementButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         buttonPanel.add(inventoryManagementButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         buttonPanel.add(employeeManagementButton);
-        buttonPanel.add(Box.createRigidArea(new Dimension(0, 40)));
         buttonPanel.add(supplierManagementButton);
         
         // Action Listeners
@@ -89,9 +87,8 @@ public class DatabaseApplicationHomepage {
         employeeManagementButton.addActionListener(e -> openEmployeeManagement());
         supplierManagementButton.addActionListener(e -> openSupplierManagement());
         
-        frame.add(titlePanel, BorderLayout.NORTH);
-        frame.add(buttonPanel, BorderLayout.CENTER);
         frame.setVisible(true);
+
     }
 
     // Placeholder methods for each module
