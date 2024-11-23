@@ -149,7 +149,7 @@ CREATE TABLE `inventory` (
 
 LOCK TABLES `inventory` WRITE;
 /*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
-INSERT INTO `inventory` VALUES (102,80,'2024-09-01'),(248,250,'2024-10-05'),(260,180,'2024-08-20'),(264,120,'2024-10-10'),(463,110,'2024-10-18'),(565,300,'2024-09-15'),(569,140,'2024-09-28'),(598,200,'2024-09-30'),(893,90,'2024-10-12'),(895,150,'2024-10-01');
+INSERT INTO `inventory` VALUES (102,172,'2024-11-23'),(248,244,'2024-11-23'),(260,175,'2024-11-23'),(264,119,'2024-11-23'),(463,108,'2024-11-23'),(565,297,'2024-11-23'),(569,139,'2024-11-23'),(598,203,'2024-11-23'),(893,36,'2024-11-23'),(895,11,'2024-11-23');
 /*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,14 +161,14 @@ DROP TABLE IF EXISTS `inventory_shelves`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `inventory_shelves` (
-  `shelf_id` int NOT NULL,
+  `shelf_id` int NOT NULL AUTO_INCREMENT,
   `product_id` int NOT NULL,
   `quantity_on_shelf` int NOT NULL,
   `last_updated` date NOT NULL,
   PRIMARY KEY (`shelf_id`),
   KEY `product_id_idx` (`product_id`),
   CONSTRAINT `product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,6 +177,7 @@ CREATE TABLE `inventory_shelves` (
 
 LOCK TABLES `inventory_shelves` WRITE;
 /*!40000 ALTER TABLE `inventory_shelves` DISABLE KEYS */;
+INSERT INTO `inventory_shelves` VALUES (1,102,15,'2024-11-23'),(2,248,9,'2024-11-23'),(3,260,15,'2024-11-23'),(4,264,2,'2024-11-23'),(5,463,12,'2024-11-23'),(6,565,11,'2024-11-23'),(7,569,30,'2024-11-23'),(8,598,8,'2024-11-23'),(9,893,17,'2024-11-23'),(10,895,3,'2024-11-23');
 /*!40000 ALTER TABLE `inventory_shelves` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,15 +219,17 @@ DROP TABLE IF EXISTS `sales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sales` (
+  `sales_id` int NOT NULL AUTO_INCREMENT,
   `product_id` int NOT NULL,
   `noted_by_employee_id` int NOT NULL,
   `sale_date` date NOT NULL,
   `quantity_ordered` int NOT NULL,
-  PRIMARY KEY (`product_id`),
-  KEY `sales_ibfk_1` (`noted_by_employee_id`),
-  CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`noted_by_employee_id`) REFERENCES `employees` (`employee_id`),
-  CONSTRAINT `sales_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`sales_id`),
+  KEY `fk1_idx` (`noted_by_employee_id`),
+  KEY `fk2_idx` (`product_id`),
+  CONSTRAINT `fk1` FOREIGN KEY (`noted_by_employee_id`) REFERENCES `employees` (`employee_id`),
+  CONSTRAINT `fk2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -235,7 +238,7 @@ CREATE TABLE `sales` (
 
 LOCK TABLES `sales` WRITE;
 /*!40000 ALTER TABLE `sales` DISABLE KEYS */;
-INSERT INTO `sales` VALUES (102,464,'2024-09-01',1),(248,118,'2024-10-05',4),(260,105,'2024-08-20',5),(264,624,'2024-10-10',1),(463,645,'2024-10-18',2),(565,164,'2024-09-15',1),(569,651,'2024-09-28',1),(598,648,'2024-09-30',2),(893,948,'2024-10-12',3),(895,101,'2024-10-01',3);
+INSERT INTO `sales` VALUES (1,102,464,'2024-09-01',1),(2,248,118,'2024-10-05',4),(3,260,105,'2024-08-20',5),(4,264,624,'2024-10-10',1),(5,463,645,'2024-10-18',2),(6,565,164,'2024-09-15',1),(7,569,651,'2024-09-28',1),(8,598,648,'2024-09-30',2),(9,893,948,'2024-10-12',3),(10,895,101,'2024-10-01',3);
 /*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,4 +306,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-20  0:31:21
+-- Dump completed on 2024-11-23 11:13:16
