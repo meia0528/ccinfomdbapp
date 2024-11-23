@@ -1,3 +1,6 @@
+CREATE DATABASE  IF NOT EXISTS `dbconveniencestore`
+USE `dbconveniencestore`;
+
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: dbconveniencestore
