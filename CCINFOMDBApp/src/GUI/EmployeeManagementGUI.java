@@ -137,98 +137,103 @@ public class EmployeeManagementGUI extends JFrame {
     }
 
     private void addEmployeeGUI() {
-
-        addEmployeeFrame = new JFrame("Checkout Transaction");
+        addEmployeeFrame = new JFrame("Add Employee");
         addEmployeeFrame.setSize(800, 700);
         addEmployeeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addEmployeeFrame.setLocationRelativeTo(null);
         addEmployeeFrame.setResizable(false);
         addEmployeeFrame.setLayout(null);
 
+        // Employee ID
         JLabel employeeIDLabel = new JLabel("Employee ID: ");
-        employeeIDLabel.setBounds(30,30,150,25);
+        employeeIDLabel.setBounds(30, 30, 150, 25);
         addEmployeeFrame.add(employeeIDLabel);
 
         JTextField employeeIDTextField = new JTextField();
-        employeeIDTextField.setBounds(200, 110, 200, 25);
+        employeeIDTextField.setBounds(200, 30, 200, 25);
         addEmployeeFrame.add(employeeIDTextField);
 
+        // Last Name
         JLabel lastNameLabel = new JLabel("Last Name: ");
-        lastNameLabel.setBounds(30,30,150,25);
+        lastNameLabel.setBounds(30, 70, 150, 25);
         addEmployeeFrame.add(lastNameLabel);
 
         JTextField lastNameField = new JTextField();
-        lastNameField.setBounds(200, 110, 200, 25);
+        lastNameField.setBounds(200, 70, 200, 25);
         addEmployeeFrame.add(lastNameField);
 
+        // First Name
         JLabel firstNameLabel = new JLabel("First Name: ");
-        firstNameLabel.setBounds(30,30,150,25);
+        firstNameLabel.setBounds(30, 110, 150, 25);
         addEmployeeFrame.add(firstNameLabel);
 
         JTextField firstNameField = new JTextField();
         firstNameField.setBounds(200, 110, 200, 25);
         addEmployeeFrame.add(firstNameField);
 
+        // Email
         JLabel emailLabel = new JLabel("Employee Email: ");
-        emailLabel.setBounds(30,30,150,25);
+        emailLabel.setBounds(30, 150, 150, 25);
         addEmployeeFrame.add(emailLabel);
 
         JTextField emailField = new JTextField();
-        emailField.setBounds(200, 110, 200, 25);
+        emailField.setBounds(200, 150, 200, 25);
         addEmployeeFrame.add(emailField);
 
+        // Contact Number
         JLabel contactNumberLabel = new JLabel("Contact Number: ");
-        contactNumberLabel.setBounds(30,30,150,25);
+        contactNumberLabel.setBounds(30, 190, 150, 25);
         addEmployeeFrame.add(contactNumberLabel);
 
         JTextField contactNumberField = new JTextField();
-        contactNumberField.setBounds(200, 110, 200, 25);
+        contactNumberField.setBounds(200, 190, 200, 25);
         addEmployeeFrame.add(contactNumberField);
 
+        // Job Title
         JLabel jobTitleLabel = new JLabel("Job Title: ");
-        jobTitleLabel.setBounds(30,30,150,25);
+        jobTitleLabel.setBounds(30, 230, 150, 25);
         addEmployeeFrame.add(jobTitleLabel);
 
         JTextField jobTitleField = new JTextField();
-        jobTitleField.setBounds(200, 110, 200, 25);
+        jobTitleField.setBounds(200, 230, 200, 25);
         addEmployeeFrame.add(jobTitleField);
 
+        // Hire Date
         JLabel hireDateLabel = new JLabel("Hire Date: ");
-        hireDateLabel.setBounds(30,30,150,25);
+        hireDateLabel.setBounds(30, 270, 150, 25);
         addEmployeeFrame.add(hireDateLabel);
 
         JTextField hireDateField = new JTextField();
-        hireDateField.setBounds(200, 110, 200, 25);
+        hireDateField.setBounds(200, 270, 200, 25);
         addEmployeeFrame.add(hireDateField);
 
+        // Employee Schedule
         JLabel employeeScheduleLabel = new JLabel("Employee Schedule: ");
-        employeeScheduleLabel.setBounds(30,30,150,25);
+        employeeScheduleLabel.setBounds(30, 310, 150, 25);
         addEmployeeFrame.add(employeeScheduleLabel);
 
         JTextField employeeScheduleField = new JTextField();
-        employeeScheduleField.setBounds(200, 110, 200, 25);
+        employeeScheduleField.setBounds(200, 310, 200, 25);
         addEmployeeFrame.add(employeeScheduleField);
 
+        // Hourly Rate
         JLabel hourlyRateLabel = new JLabel("Hourly Rate: ");
-        hourlyRateLabel.setBounds(30,30,150,25);
+        hourlyRateLabel.setBounds(30, 350, 150, 25);
         addEmployeeFrame.add(hourlyRateLabel);
 
         JTextField hourlyRateField = new JTextField();
-        hourlyRateField.setBounds(200, 110, 200, 25);
+        hourlyRateField.setBounds(200, 350, 200, 25);
         addEmployeeFrame.add(hourlyRateField);
 
+        // Add Employee Button
         JButton addEmployeeButton = new JButton("Add Employee");
-        addEmployeeButton.setBounds(30, 160, 150, 35);
+        addEmployeeButton.setBounds(30, 400, 150, 35);
         addEmployeeButton.setFont(new Font("Arial", Font.BOLD, 16));
         addEmployeeButton.setForeground(Color.WHITE);
         addEmployeeButton.setBackground(new Color(0x008163));
         addEmployeeFrame.add(addEmployeeButton);
 
-        JTextArea message = new JTextArea();
-        message.setBounds(30, 260, 500, 200);
-        message.setEditable(false);
-        addEmployeeFrame.add(message);
-
+        // Action Listener for Add Employee Button
         addEmployeeButton.addActionListener(e -> {
             try {
                 String firstName = firstNameField.getText();
@@ -246,10 +251,11 @@ public class EmployeeManagementGUI extends JFrame {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
             }
-
         });
+
         addEmployeeFrame.setVisible(true);
     }
+
 
     private void updateEmployeeGUI() {
         updateEmployeeFrame = new JFrame("Update Employee");
@@ -647,7 +653,7 @@ public class EmployeeManagementGUI extends JFrame {
 
     public void performanceReportGUI() {
         performanceReportFrame = new JFrame("Performance Report");
-        performanceReportFrame.setSize(800, 700));
+        performanceReportFrame.setSize(800, 700);
         performanceReportFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         performanceReportFrame.setLocationRelativeTo(null);
         performanceReportFrame.setResizable(false);
