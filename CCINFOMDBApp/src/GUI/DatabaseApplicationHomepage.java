@@ -110,12 +110,7 @@ public class DatabaseApplicationHomepage {
     }
 
     private void openEmployeeManagement() {
-    	JFrame employeeFrame = new JFrame("Employee Management System");
-    	employeeFrame.setSize(800, 700); // let's follow this as standard for the opening so all records are visible
-    	employeeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    	employeeFrame.setLocationRelativeTo(frame);
-    	employeeFrame.setResizable(false);
-    	employeeFrame.setVisible(true);
+        new EmployeeManagementGUI();
     }
 
     private void openSupplierManagement() {
