@@ -114,12 +114,7 @@ public class DatabaseApplicationHomepage {
     }
 
     private void openSupplierManagement() {
-    	JFrame supplierFrame = new JFrame("Supplier Management System");
-    	supplierFrame.setSize(800, 700); // let's follow this as standard for the opening so all records are visible
-    	supplierFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    	supplierFrame.setLocationRelativeTo(frame);
-    	supplierFrame.setResizable(false);
-    	supplierFrame.setVisible(true);
+    	new SupplierManagementGUI();
     }
 
     public static void main(String[] args) {
